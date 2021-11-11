@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+    <!-- environments是配置mybatis中链接数据库 在defalut中指定使用哪一个数据库 -->
+    <environments default="mysql">
+        <!-- 每一个environment可以配置一种数据库 id必须体现唯一性 -->
+        <environment id="mysql">
+            <!-- transactionManager配置事务管理机制JDBC采用原始提交和回滚模式 -->
+            <transactionManager type="JDBC"></transactionManager>
+            <!-- dataSource连接池 -->
+            <!-- POOLED代表使用连接池的方式获取连接对象 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/ajax?"/>
+                <property name="username" value="root"/>
+                <property name="password" value="123456"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- mappers和environment同级 -->
+    <mappers>
+        <mapper resource="com/baizhi/wyt/mapper/UserDaoMapper.xml" />
+    </mappers>
+
+</configuration>

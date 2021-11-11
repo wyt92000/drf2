@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<!-- namespace代表要实现的接口，全类名  -->
+<mapper namespace="com.baizhi.wyt.dao.UserDao">
+    <select id="queryAll" resultType="com.baizhi.wyt.entity.User">
+        select id,name,age,birthday from user
+    </select>
+    <select id="queryOne" parameterType="int" resultType="com.baizhi.wyt.entity.User">
+        select id,name,age,birthday from user where id = #{id}
+    </select>
+    <insert id="insert" parameterType="com.baizhi.wyt.entity.User">
+        insert into user values(#{id},#{name},#{age},#{birthday})
+    </insert>
+    <delete id="delete" parameterType="int">
+        delete user where id = #{id}
+    </delete>
+    <update id="update" parameterType="com.baizhi.wyt.entity.User">
+        update user set name=#{name},age=#{age},birthday=#{birthday} where id = #{id}
+    </update>
+</mapper>
